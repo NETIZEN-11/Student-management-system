@@ -1,0 +1,167 @@
+.submission-page {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.submission-page > .btn {
+  margin-bottom: 20px;
+}
+
+.submission-details {
+  background-color: white;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.submission-details h1 {
+  margin-bottom: 20px;
+  color: var(--text-dark);
+  font-size: 24px;
+}
+
+.submission-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: var(--light-bg);
+  border-radius: 5px;
+}
+
+.info-item {
+  font-size: 14px;
+}
+
+.info-item strong {
+  color: var(--primary-color);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.late-badge {
+  display: inline-block;
+  background-color: var(--danger-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.submission-content {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.submission-content h2 {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.submission-text,
+.submission-link {
+  background-color: var(--light-bg);
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.submission-text h3,
+.submission-link h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--primary-color);
+}
+
+.submission-link a {
+  color: var(--primary-color);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.submission-link a:hover {
+  text-decoration: underline;
+}
+
+.grading-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.grading-section h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.grading-section form {
+  margin-bottom: 20px;
+}
+
+.grading-section .btn {
+  margin-right: 10px;
+}
+
+.plagiarism-score {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #fff3e6;
+  border-left: 4px solid var(--warning-color);
+  color: var(--warning-color);
+  font-weight: 600;
+}
+
+.feedback-section {
+  background-color: #f0f7ff;
+  padding: 20px;
+  border-radius: 5px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.feedback-section h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.feedback-section p {
+  margin: 0 0 15px 0;
+  line-height: 1.6;
+}
+
+.ai-feedback {
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 15px;
+  border-left: 4px solid var(--secondary-color);
+}
+
+.ai-feedback h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--secondary-color);
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .submission-details {
+    padding: 20px;
+  }
+
+  .submission-info {
+    grid-template-columns: 1fr;
+  }
+
+  .grading-section .btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

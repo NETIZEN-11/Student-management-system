@@ -1,0 +1,85 @@
+.analytics-page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.analytics-page h1 {
+  margin-bottom: 30px;
+  color: var(--text-dark);
+  font-size: 28px;
+}
+
+.analytics-section {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.analytics-section h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: var(--text-dark);
+}
+
+.analytics-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.analytics-table thead {
+  background-color: var(--light-bg);
+}
+
+.analytics-table th,
+.analytics-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 14px;
+}
+
+.analytics-table tbody tr:hover {
+  background-color: var(--light-bg);
+}
+
+.risk-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.risk-high {
+  background-color: #ffe6e6;
+  color: var(--danger-color);
+}
+
+.risk-medium {
+  background-color: #fff3e6;
+  color: var(--warning-color);
+}
+
+.risk-low {
+  background-color: #e6ffe6;
+  color: var(--success-color);
+}
+
+@media (max-width: 768px) {
+  .analytics-section {
+    padding: 15px;
+  }
+
+  .analytics-table {
+    font-size: 12px;
+  }
+
+  .analytics-table th,
+  .analytics-table td {
+    padding: 8px;
+  }
+}
