@@ -5,7 +5,7 @@ const authMiddleware = require('../middleware/authMiddleware');
 const router = express.Router();
 
 // Order matters - specific routes before generic ones
-router.put('/read-all', authMiddleware, notificationController.markAllAsRead);
+router.put('/mark-all-read', authMiddleware, notificationController.markAllAsRead);
 router.get('/', authMiddleware, notificationController.getNotifications);
 router.put('/:notificationId/read', authMiddleware, notificationController.markAsRead);
 router.delete('/:notificationId', authMiddleware, notificationController.deleteNotification);

@@ -6,6 +6,7 @@ const roleMiddleware = require('../middleware/roleMiddleware');
 const router = express.Router();
 
 // Order matters - specific routes before generic ones
+router.get('/all', authMiddleware, roleMiddleware(['mentor', 'admin']), submissionController.getAllSubmissions);
 router.get('/my-submissions', authMiddleware, submissionController.getStudentSubmissions);
 router.post('/', authMiddleware, submissionController.submitTask);
 router.get('/task/:taskId', authMiddleware, submissionController.getSubmissionsByTask);
