@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { useAuth } from './hooks/useAuth';
@@ -21,6 +21,8 @@ import UsersPage from './pages/UsersPage';
 import TaskPage from './pages/TaskPage';
 import SubmissionPage from './pages/SubmissionPage';
 import AnalyticsPage from './pages/AnalyticsPage';
+import TaskManagement from './pages/TaskManagement';
+import SubmissionsManagement from './pages/SubmissionsManagement';
 
 import './assets/styles/global.css';
 
@@ -91,6 +93,15 @@ const AppContent = () => {
             />
 
             <Route
+              path="/submissions"
+              element={
+                <ProtectedRoute>
+                  <SubmissionsManagement />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
               path="/submissions/:submissionId"
               element={
                 <ProtectedRoute>
@@ -112,7 +123,7 @@ const AppContent = () => {
               path="/tasks"
               element={
                 <ProtectedRoute>
-                  <TaskPage />
+                  <TaskManagement />
                 </ProtectedRoute>
               }
             />
@@ -122,20 +133,9 @@ const AppContent = () => {
               element={
                 <ProtectedRoute>
                   <div style={{ padding: '20px', textAlign: 'center' }}>
-                    <h2>Leaderboard</h2>
-                    <p>Coming soon...</p>
-                  </div>
-                </ProtectedRoute>
-              }
-            />
-
-            <Route
-              path="/submissions"
-              element={
-                <ProtectedRoute>
-                  <div style={{ padding: '20px', textAlign: 'center' }}>
-                    <h2>My Submissions</h2>
-                    <p>Coming soon...</p>
+                    <h2>🏆 Leaderboard</h2>
+                    <p>Student rankings and achievements coming soon...</p>
+                    <Link to="/dashboard" className="btn btn-primary">Back to Dashboard</Link>
                   </div>
                 </ProtectedRoute>
               }
@@ -146,8 +146,9 @@ const AppContent = () => {
               element={
                 <ProtectedRoute>
                   <div style={{ padding: '20px', textAlign: 'center' }}>
-                    <h2>Messages</h2>
-                    <p>Coming soon...</p>
+                    <h2>💬 Messages</h2>
+                    <p>Messaging system coming soon...</p>
+                    <Link to="/dashboard" className="btn btn-primary">Back to Dashboard</Link>
                   </div>
                 </ProtectedRoute>
               }
@@ -158,8 +159,9 @@ const AppContent = () => {
               element={
                 <ProtectedRoute>
                   <div style={{ padding: '20px', textAlign: 'center' }}>
-                    <h2>Profile</h2>
-                    <p>Coming soon...</p>
+                    <h2>👤 Profile</h2>
+                    <p>User profile management coming soon...</p>
+                    <Link to="/dashboard" className="btn btn-primary">Back to Dashboard</Link>
                   </div>
                 </ProtectedRoute>
               }
@@ -170,16 +172,31 @@ const AppContent = () => {
               element={
                 <ProtectedRoute>
                   <div style={{ padding: '20px', textAlign: 'center' }}>
-                    <h2>Notifications</h2>
-                    <p>Coming soon...</p>
+                    <h2>🔔 Notifications</h2>
+                    <p>Notification center coming soon...</p>
+                    <Link to="/dashboard" className="btn btn-primary">Back to Dashboard</Link>
                   </div>
                 </ProtectedRoute>
               }
             />
 
             {/* Redirect */}
-            <Route path="/" element={<Navigate to="/dashboard" replace />} />
-            <Route path="*" element={<Navigate to="/dashboard" replace />} />
+            <Route 
+              path="/" 
+              element={
+                isAuthenticated ? 
+                <Navigate to="/dashboard" replace /> : 
+                <Navigate to="/login" replace />
+              } 
+            />
+            <Route 
+              path="*" 
+              element={
+                isAuthenticated ? 
+                <Navigate to="/dashboard" replace /> : 
+                <Navigate to="/login" replace />
+              } 
+            />
           </Routes>
         </main>
       </div>

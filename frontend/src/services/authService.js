@@ -35,6 +35,10 @@ const authService = {
   logout: () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    // Clear any other stored data
+    localStorage.removeItem('theme');
+    // Force page reload to ensure clean state
+    window.location.href = '/login';
   },
 
   getCurrentUser: async () => {
