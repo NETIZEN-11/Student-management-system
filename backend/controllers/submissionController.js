@@ -59,6 +59,18 @@ const submissionController = {
     try {
       const taskId = req.params.taskId;
 
+      // Check if user is mentor/admin or task creator
+      const task = await Task.findById(taskId);
+      if (!task) {
+        return res.status(404).json({ message: 'Task not found' });
+      }
+
+      // Only mentors, admins, or task creators can view submissions
+      if (!['mentor', 'admin'].includes(req.user.role) && 
+          task.createdBy.toString() !== req.user.userId) {
+        return res.status(403).json({ message: 'Not authorized to view these submissions' });
+      }
+
       const submissions = await Submission.find({ taskId })
         .populate('studentId', 'name email')
         .populate('reviewedBy', 'name email')
@@ -190,6 +202,35 @@ const submissionController = {
     } catch (error) {
       logger.error('Plagiarism check error:', error);
       res.status(500).json({ message: 'Failed to check plagiarism' });
+    }
+  },
+
+  getAllSubmissions: async (req, res) => {
+    try {
+      // Only mentors and admins can view all submissions
+      if (!['mentor', 'admin'].includes(req.user.role)) {
+        return res.status(403).json({ message: 'Not authorized to view all submissions' });
+      }
+
+      let filter = {};
+      
+      // If mentor, only show submissions for their tasks
+      if (req.user.role === 'mentor') {
+        const mentorTasks = await Task.find({ createdBy: req.user.userId }).select('_id');
+        const taskIds = mentorTasks.map(task => task._id);
+        filter.taskId = { $in: taskIds };
+      }
+
+      const submissions = await Submission.find(filter)
+        .populate('studentId', 'name email')
+        .populate('taskId', 'title dueDate maxScore')
+        .populate('reviewedBy', 'name email')
+        .sort({ submittedAt: -1 });
+
+      res.status(200).json({ submissions });
+    } catch (error) {
+      logger.error('Get all submissions error:', error);
+      res.status(500).json({ message: 'Failed to fetch submissions' });
     }
   },
 };
