@@ -18,7 +18,7 @@ const TaskPage = () => {
 
   useEffect(() => {
     fetchTaskData();
-  }, [taskId]);
+  }, [taskId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchTaskData = async () => {
     try {

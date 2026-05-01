@@ -20,7 +20,7 @@ const SubmissionPage = () => {
 
   useEffect(() => {
     fetchSubmission();
-  }, [submissionId]);
+  }, [submissionId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchSubmission = async () => {
     try {
