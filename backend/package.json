@@ -9,7 +9,8 @@
     "setup": "node startup.js",
     "seed": "node scripts/seedDatabase.js",
     "clear": "node scripts/clearDatabase.js",
-    "notifications": "node scripts/createSampleNotifications.js"
+    "notifications": "node scripts/createSampleNotifications.js",
+    "build": "echo 'Backend build complete'"
   },
   "keywords": ["student", "management", "system"],
   "author": "",
