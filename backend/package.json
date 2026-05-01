@@ -7,7 +7,9 @@
     "start": "node startup.js && node server.js",
     "dev": "node startup.js && nodemon server.js",
     "setup": "node startup.js",
-    "seed": "node scripts/seedDatabase.js"
+    "seed": "node scripts/seedDatabase.js",
+    "clear": "node scripts/clearDatabase.js",
+    "notifications": "node scripts/createSampleNotifications.js"
   },
   "keywords": ["student", "management", "system"],
   "author": "",
